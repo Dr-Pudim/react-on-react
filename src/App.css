@@ -1,0 +1,16 @@
+/* Header Bar */
+
+#HeaderBar {
+  background-color: #20232a;
+  color: #61dafb;
+  padding: 8px;
+}
+
+#HeaderBar h1{
+  width: fit-content;
+  margin: auto;
+}
+
+#HeaderBar span{
+  color: whitesmoke;
+}

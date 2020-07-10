@@ -1,10 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import HeaderBar from './components/HeaderBar'
 
 function App() {
   return (
-    <h1>hey</h1>
+    <HeaderBar></HeaderBar>
   );
 }
 
