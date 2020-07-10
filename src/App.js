@@ -2,10 +2,14 @@ import React from 'react';
 import './App.css';
 
 import HeaderBar from './components/HeaderBar'
+import PostList from './components/PostList'
 
 function App() {
   return (
-    <HeaderBar></HeaderBar>
+    <div>
+      <HeaderBar></HeaderBar>
+      <PostList/>
+    </div>
   );
 }
 
