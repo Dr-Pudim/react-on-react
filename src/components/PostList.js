@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PostPreview from './PostPreview'
+import LoadingScreen from './LoadingScreen'
 
 class PostList extends React.Component {
     hotURL = 'https://www.reddit.com/r/reactjs/hot.json';
@@ -82,7 +83,7 @@ class PostList extends React.Component {
         );
         return [this.buttonGroup, postList];
     }else{
-        return (<p>loading</p>);
+        return [this.buttonGroup,(<LoadingScreen/>)];
     }
     }
 }

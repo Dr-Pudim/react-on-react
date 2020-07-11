@@ -32,6 +32,34 @@
   padding: 1vh 2vw;
 }
 
+/* Loading Screen */
+
+.App-logo {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.LoadingScreen h2, .LoadingScreen img{
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    display: block;
+}
+
 /* PostPreview */
 
 .PostPreview{
