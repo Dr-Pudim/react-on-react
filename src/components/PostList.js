@@ -11,10 +11,6 @@ class PostList extends React.Component {
         this.state = {loaded: false};
 
         fetch(url)
-            //.then(data=>{
-            //    this.setState({loaded: true ,data: data.body});
-            //    console.log(data.body)
-            //})
             .then(res=>{
                 res.json()
                     .then(data=>{
