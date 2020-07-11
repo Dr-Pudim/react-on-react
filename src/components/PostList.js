@@ -15,8 +15,7 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, data: data});
-                        console.log(data)
+                        this.setState({loaded: true, data: data, dataset: "hot"});
                     })
             })
     }
@@ -27,7 +26,7 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, data: data});
+                        this.setState({loaded: true, dataset: "new"});
                     })
             })
     }
@@ -38,7 +37,7 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, data: data});
+                        this.setState({loaded: true, dataset: "hot"});
                     })
             })
     }
@@ -49,29 +48,39 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, data: data});
+                        this.setState({loaded: true, data: data, dataset: "rising"});
                     })
             })
     }
 
+    hotButton= 
+    <button class="reddit-buttom" onClick={this.handleClickHot}>
+        Hot
+    </button>;
+
+    newButton=
+    <button class="reddit-buttom" onClick={this.handleClickNew}>
+        New
+    </button>;
+
+    risingButton=
+    <button class="reddit-buttom" onClick={this.handleClickRising}>
+        Rising
+    </button>;
+
+    buttonGroup=
+    <div class="buttonGroup">
+        {this.hotButton}
+        {this.newButton}
+        {this.risingButton}
+    </div>;
+
     render() {
     if(this.state.loaded){
-        const hotButton= 
-            <button onClick={this.handleClickHot}>
-                hot
-            </button>;
-        const newButton=
-            <button onClick={this.handleClickNew}>
-                New
-            </button>;
-        const risingButton=
-            <button onClick={this.handleClickRising}>
-                Rising
-            </button>;
         var postList = this.state.data.data.children.map((post) => 
             <PostPreview {...post} />
         );
-        return [hotButton, newButton, risingButton, postList];
+        return [this.buttonGroup, postList];
     }else{
         return (<p>loading</p>);
     }
