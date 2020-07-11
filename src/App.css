@@ -14,3 +14,43 @@
 #HeaderBar span{
   color: whitesmoke;
 }
+
+/* PostPreview */
+
+.PostPreview{
+  border-top: 2px solid black;
+}
+
+.PostPreview div{
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.PostPreview img{
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.PostPreview h2{
+  font-size: 18px;
+}
+
+.PostPreview p{
+  font-size: 16px;
+}
+
+.thumbnail-holder{
+  width: 30%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.post-info{
+  padding: 8px;
+}
+
+.thumbnail-holder+.post-info{
+  width: 70%;
+}
+

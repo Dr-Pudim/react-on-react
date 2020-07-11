@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PostPreview from './PostPreview'
+
 class PostList extends React.Component {
     constructor(props) {
         super(props);
@@ -21,21 +23,16 @@ class PostList extends React.Component {
                     })
             })
     }
-    
-    componentDidMount() {
-    
-    }
-    
-    componentWillUnmount() {
-        
-    }
 
     render() {
-      return (
-        <div>
-            <h1>{this.state.loaded.toString()}</h1>
-        </div>
-      );
+    if(this.state.loaded){
+        var postList = this.state.data.data.children.map((post) => 
+            <PostPreview {...post} />
+        );
+        return postList;
+    }else{
+        return (<p>loading</p>);
+    }
     }
 }
 
