@@ -64,6 +64,8 @@
 
 .PostPreview{
   border-top: 2px solid black;
+  display: flex;
+  align-items: center;
 }
 
 .PostPreview div{
