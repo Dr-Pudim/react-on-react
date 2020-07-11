@@ -27,7 +27,7 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, dataset: "new"});
+                        this.setState({loaded: true, data: data, dataset: "new"});
                     })
             })
     }
@@ -38,7 +38,7 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, dataset: "hot"});
+                        this.setState({loaded: true, data: data, dataset: "hot"});
                     })
             })
     }
