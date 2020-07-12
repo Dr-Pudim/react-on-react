@@ -74,6 +74,7 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
+                        console.log(data);
                         data.data.children = this.state.data.data.children.concat(data.data.children);
                         this.setState({
                             data: data
@@ -114,7 +115,10 @@ class PostList extends React.Component {
         var postList = this.state.data.data.children.map((post) => 
             <PostPreview {...post} />
         );
-        return [this.buttonGroup, postList, this.loadMoreButton];
+        if(this.state.dataset !== 'rising'){
+            return [this.buttonGroup, postList, this.loadMoreButton];
+        }
+        else return [this.buttonGroup, postList]
     }else{
         return [this.buttonGroup,(<LoadingScreen/>)];
     }
