@@ -54,6 +54,36 @@ class PostList extends React.Component {
             })
     }
 
+    handleClickLoadMore = () => {
+        var requestURL;
+        switch (this.state.dataset){
+            case 'hot':
+                requestURL = this.hotURL;
+                break;
+            case 'new':
+                requestURL = this.newURL;
+                break;
+            case 'rising':
+                requestURL = this.risingURL;
+                break;
+            default:
+                console.err("Cant load more: no valid dataset on state.");
+        }
+        requestURL = requestURL + "?after=" + this.state.data.data.after;
+        fetch(requestURL)
+            .then(res=>{
+                res.json()
+                    .then(data=>{
+                        this.setState((state) => {
+                            data.data.children = [...state.data.data.children, ...data.data.children]
+                            return {
+                                data: data
+                            }
+                        });
+                    });
+            });
+    }
+
     hotButton= 
     <button class="reddit-buttom" onClick={this.handleClickHot}>
         Hot
@@ -76,12 +106,17 @@ class PostList extends React.Component {
         {this.risingButton}
     </div>;
 
+    loadMoreButton=
+    <button onClick={this.handleClickLoadMore}>
+        Load more!
+    </button>
+
     render() {
     if(this.state.loaded){
         var postList = this.state.data.data.children.map((post) => 
             <PostPreview {...post} />
         );
-        return [this.buttonGroup, postList];
+        return [this.buttonGroup, postList, this.loadMoreButton];
     }else{
         return [this.buttonGroup,(<LoadingScreen/>)];
     }
