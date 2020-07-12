@@ -74,11 +74,10 @@ class PostList extends React.Component {
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState((state) => {
-                            data.data.children = [...state.data.data.children, ...data.data.children]
-                            return {
-                                data: data
-                            }
+                        var myData = this.state.data;
+                        myData.data.children = myData.data.children.concat(data.data.children);
+                        this.setState({
+                            data: myData
                         });
                     });
             });
