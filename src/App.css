@@ -71,10 +71,18 @@
 
 /* PostPreview */
 
+#postHolder{
+  margin: 0px 2vw;
+}
+
 .PostPreview{
-  border-top: 2px solid black;
+  border-top: 2px solid darkgray;
   display: flex;
   align-items: center;
+}
+
+.PostPreview:hover{
+  background-color: #eeeeee;
 }
 
 .PostPreview div{

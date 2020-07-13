@@ -8,7 +8,9 @@ function App() {
   return (
     <div>
       <HeaderBar></HeaderBar>
-      <PostList/>
+      <div id="postHolder">
+        <PostList/>
+      </div>
     </div>
   );
 }
