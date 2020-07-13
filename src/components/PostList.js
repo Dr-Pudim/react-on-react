@@ -106,9 +106,11 @@ class PostList extends React.Component {
     </div>;
 
     loadMoreButton=
-    <button onClick={this.handleClickLoadMore}>
-        Load more!
-    </button>
+    <div class="buttonGroup">
+        <button onClick={this.handleClickLoadMore} className="reddit-buttom">
+            Carregar mais posts!
+        </button>
+    </div>
 
     render() {
     if(this.state.loaded){
