@@ -29,7 +29,12 @@
   margin: 0px 2px;
   color: white;
   font-size: 4vw;
-  padding: 1vh 2vw;
+  padding: 1vh 6vw;
+}
+
+#load-more{
+  padding: 1vh 25vw;
+  font-weight: 600;
 }
 
 /* Loading Screen */

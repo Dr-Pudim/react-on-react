@@ -106,8 +106,8 @@ class PostList extends React.Component {
 
     loadMoreButton=
     <div class="buttonGroup">
-        <button onClick={this.handleClickLoadMore} className="reddit-buttom">
-            Carregar mais posts!
+        <button onClick={this.handleClickLoadMore} id="load-more" className="reddit-buttom">
+            + Ver Mais
         </button>
     </div>
 
