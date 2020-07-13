@@ -78,8 +78,9 @@
   box-sizing: border-box;
 }
 
-.PostPreview img{
+.thumbnail-holder img{
   width: 100%;
+  max-width: 100px;
   height: auto;
   vertical-align: middle;
 }
@@ -93,7 +94,7 @@
 }
 
 .thumbnail-holder{
-  width: 30%;
+  width: fit-content;
   height: 100%;
   vertical-align: middle;
 }
