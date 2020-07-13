@@ -22,34 +22,34 @@ class PostList extends React.Component {
     }
 
     handleClickNew = () => {
-        this.setState({loaded: false});
+        this.setState({loaded: false, dataset: "new"});
         fetch(this.newURL)
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, data: data, dataset: "new"});
+                        this.setState({loaded: true, data: data});
                     })
             })
     }
 
     handleClickHot = () => {
-        this.setState({loaded: false});
+        this.setState({loaded: false, dataset: "hot"});
         fetch(this.hotURL)
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, data: data, dataset: "hot"});
+                        this.setState({loaded: true, data: data});
                     })
             })
     }
 
     handleClickRising = () => {
-        this.setState({loaded: false});
+        this.setState({loaded: false, dataset: "rising"});
         fetch(this.risingURL)
             .then(res=>{
                 res.json()
                     .then(data=>{
-                        this.setState({loaded: true, data: data, dataset: "rising"});
+                        this.setState({loaded: true, data: data});
                     })
             })
     }
@@ -82,27 +82,49 @@ class PostList extends React.Component {
             });
     }
 
-    hotButton= 
-    <button class="reddit-buttom" onClick={this.handleClickHot}>
+    hotButton(active){
+        var className = "reddit-buttom";
+        if(active)
+            className = className + " active";
+        return (<button className={className} onClick={this.handleClickHot}>
         Hot
-    </button>;
+    </button>);
+    } 
 
-    newButton=
-    <button class="reddit-buttom" onClick={this.handleClickNew}>
+    newButton(active){
+        var className = "reddit-buttom";
+        if(active)
+            className = className + " active";
+        return (<button className={className} onClick={this.handleClickNew}>
         New
-    </button>;
+    </button>);
+    }
 
-    risingButton=
-    <button class="reddit-buttom" onClick={this.handleClickRising}>
-        Rising
-    </button>;
+    risingButton(active){
+        var className = "reddit-buttom";
+        if(active)
+            className = className + " active";
+        return (<button className={className} onClick={this.handleClickRising}>
+            Rising
+        </button>);
+    }
 
-    buttonGroup=
-    <div class="buttonGroup">
-        {this.hotButton}
-        {this.newButton}
-        {this.risingButton}
-    </div>;
+    isDatasetActive(dataset){
+        if(dataset === this.state.dataset)
+            return true;
+        else
+            return false;
+    }
+
+    buttonGroup(){
+        return (
+        <div class="buttonGroup">
+            {this.hotButton(this.isDatasetActive("hot"))}
+            {this.newButton(this.isDatasetActive("new"))}
+            {this.risingButton(this.isDatasetActive("rising"))}
+        </div>
+        );
+    }
 
     loadMoreButton=
     <div class="buttonGroup">
@@ -117,11 +139,11 @@ class PostList extends React.Component {
             <PostPreview {...post} />
         );
         if(this.state.dataset !== 'rising'){
-            return [this.buttonGroup, postList, this.loadMoreButton];
+            return [this.buttonGroup(), postList, this.loadMoreButton];
         }
-        else return [this.buttonGroup, postList]
+        else return [this.buttonGroup(), postList]
     }else{
-        return [this.buttonGroup,(<LoadingScreen/>)];
+        return [this.buttonGroup(),(<LoadingScreen/>)];
     }
     }
 }

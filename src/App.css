@@ -32,6 +32,10 @@
   padding: 1vh 6vw;
 }
 
+.active{
+  background-color: orangered;
+}
+
 #load-more{
   padding: 1vh 25vw;
   font-weight: 600;
