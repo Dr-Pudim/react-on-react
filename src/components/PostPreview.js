@@ -35,7 +35,7 @@ function PostPreview(props) {
             <div class="post-info">
                 <h2>{props.data.title}</h2>
                 <p><span class="createdAt">{getCreatedAtString(props.data.created_utc)}</span> por <span class="author">{props.data.author}</span></p>
-                <p>{props.data.domain}</p>
+                <p class="domain">{props.data.domain}</p>
             </div>
         </div>
     );

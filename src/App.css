@@ -97,6 +97,18 @@
   padding: 8px;
 }
 
+.createdAt{
+  color: #777777;
+}
+
+.author{
+  color: orange;
+}
+
+.domain{
+  text-decoration: underline;
+}
+
 .thumbnail-holder+.post-info{
   width: 70%;
 }
