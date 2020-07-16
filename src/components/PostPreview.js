@@ -21,7 +21,7 @@ function getCreatedAtString(utc){
 function thumbnail(thumbnail){
     if(thumbnail !== "self" && thumbnail !== "default"){
         return (
-            <div class="thumbnail-holder">
+            <div className="thumbnail-holder">
                 <img src={thumbnail} alt="thumbnail"/>
             </div>
         )
@@ -30,12 +30,12 @@ function thumbnail(thumbnail){
 
 function PostPreview(props) {
     return (
-        <div class="PostPreview">
+        <div className="PostPreview">
             {thumbnail(props.data.thumbnail)}
-            <div class="post-info">
+            <div className="post-info">
                 <h2>{props.data.title}</h2>
-                <p><span class="createdAt">{getCreatedAtString(props.data.created_utc)}</span> por <span class="author">{props.data.author}</span></p>
-                <p class="domain">{props.data.domain}</p>
+                <p><span className="createdAt">{getCreatedAtString(props.data.created_utc)}</span> por <span className="author">{props.data.author}</span></p>
+                <p className="domain">{props.data.domain}</p>
             </div>
         </div>
     );

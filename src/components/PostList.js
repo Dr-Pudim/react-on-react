@@ -118,7 +118,7 @@ class PostList extends React.Component {
 
     buttonGroup(){
         return (
-        <div class="buttonGroup">
+        <div className="buttonGroup">
             {this.hotButton(this.isDatasetActive("hot"))}
             {this.newButton(this.isDatasetActive("new"))}
             {this.risingButton(this.isDatasetActive("rising"))}
@@ -127,7 +127,7 @@ class PostList extends React.Component {
     }
 
     loadMoreButton=
-    <div class="buttonGroup">
+    <div className="buttonGroup">
         <button onClick={this.handleClickLoadMore} id="load-more" className="reddit-buttom">
             + Ver Mais
         </button>
