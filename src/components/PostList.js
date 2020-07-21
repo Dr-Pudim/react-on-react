@@ -11,14 +11,16 @@ class PostList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {loaded: false};
+    }
 
+    componentDidMount() {
         fetch(this.hotURL)
-            .then(res=>{
-                res.json()
-                    .then(data=>{
-                        this.setState({loaded: true, data: data, dataset: "hot"});
-                    })
-            })
+        .then(res=>{
+            res.json()
+                .then(data=>{
+                    this.setState({loaded: true, data: data, dataset: "hot"});
+                })
+        })
     }
 
     handleClickNew = () => {
@@ -136,7 +138,7 @@ class PostList extends React.Component {
     render() {
     if(this.state.loaded){
         var postList = this.state.data.data.children.map((post) => 
-            <PostPreview {...post} />
+            <PostPreview key={post.data.id} post={post} />
         );
         if(this.state.dataset !== 'rising'){
             return [this.buttonGroup(), postList, this.loadMoreButton];

@@ -30,12 +30,12 @@ function thumbnail(thumbnail){
 
 function PostPreview(props) {
     return (
-        <div className="PostPreview">
-            {thumbnail(props.data.thumbnail)}
+        <div id={props.post.data.id} className="PostPreview">
+            {thumbnail(props.post.data.thumbnail)}
             <div className="post-info">
-                <h2>{props.data.title}</h2>
-                <p><span className="createdAt">{getCreatedAtString(props.data.created_utc)}</span> por <span className="author">{props.data.author}</span></p>
-                <p className="domain">{props.data.domain}</p>
+                <h2>{props.post.data.title}</h2>
+                <p><span className="createdAt">{getCreatedAtString(props.post.data.created_utc)}</span> por <span className="author">{props.post.data.author}</span></p>
+                <p className="domain">{props.post.data.domain}</p>
             </div>
         </div>
     );
