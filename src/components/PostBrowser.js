@@ -4,6 +4,7 @@ import PostList from './PostList';
 import LoadingScreen from './LoadingScreen';
 import DatasetButton from './buttons/DatasetButton';
 import LoadMoreButton from './buttons/LoadMoreButton';
+import ErrorScreen from './ErrorScreen';
 
 class PostBrowser extends React.Component {
 
@@ -45,13 +46,19 @@ class PostBrowser extends React.Component {
                     if(res.ok){
                         res.json()
                             .then(data=>{
-                                this.setState({loaded: true, data: data});
+                                this.setState({loaded: true, data: data, error: null});
                             })
                     } else {
+                        this.setState({loaded: true, error: "Sorry, we failed to connect to Reddit"})
                         console.error("Failed to connect to Reddit");
                     }
                 })
+                .catch((error) => {
+                    this.setState({loaded: true, error: "Sorry, something went wrong"})
+                    console.error("Error while trying to fetch: " + error.message)
+                });
         } else {
+            this.setState({loaded: true, error: "Sorry, something went wrong"})
             console.error("No valid url from dataset: " + this.state.dataset)
         }
     }
@@ -62,9 +69,8 @@ class PostBrowser extends React.Component {
     }
 
     loadMorePosts(){
-        var requestURL = this.getRedditURL();
+        var requestURL = this.getRedditURL(this.state.dataset);
         if(requestURL){
-            console.log(this.state);
             requestURL = requestURL + "?after=" + this.state.data.data.after;
             fetch(requestURL)
                 .then(res=>{
@@ -88,7 +94,11 @@ class PostBrowser extends React.Component {
     render(){
         var mainContent;
         if(this.state.loaded){
-            mainContent = <PostList posts={this.state.data.data.children} />
+            if(this.state.error){
+                mainContent = <ErrorScreen message={this.state.error} />
+            }else{
+                mainContent = <PostList posts={this.state.data.data.children} />
+            }
         }
         else
             mainContent = <LoadingScreen />;
