@@ -1,16 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import HeaderBar from './components/HeaderBar'
-import PostList from './components/PostList'
+import HeaderBar from './components/HeaderBar';
+import PostBrowser from './components/PostBrowser';
 
 function App() {
   return (
     <div>
       <HeaderBar></HeaderBar>
-      <div id="postHolder">
-        <PostList/>
-      </div>
+      <PostBrowser></PostBrowser>
     </div>
   );
 }
