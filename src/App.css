@@ -136,3 +136,10 @@
   width: 70%;
 }
 
+/* Error Screen */
+
+.ErrorScreen h2, .ErrorScreen img{
+  margin: auto;
+  display: block;
+  width: fit-content;
+}
