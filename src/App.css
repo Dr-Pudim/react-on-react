@@ -32,6 +32,11 @@
   padding: 1vh 6vw;
 }
 
+.reddit-buttom:disabled{
+  background-color: lightgray;
+  color: white;
+}
+
 .active{
   background-color: orangered;
 }
