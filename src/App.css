@@ -80,10 +80,15 @@
   margin: 0px 2vw;
 }
 
+.PostLink{
+  text-decoration: none;
+}
+
 .PostPreview{
   border-top: 2px solid darkgray;
   display: flex;
   align-items: center;
+  color: #20232a;
 }
 
 .PostPreview:hover{
@@ -134,6 +139,10 @@
 
 .thumbnail-holder+.post-info{
   width: 70%;
+}
+
+.PostLink:visited h2{
+  color: darkslateblue;
 }
 
 /* Error Screen */

@@ -29,15 +29,20 @@ function thumbnail(thumbnail){
 }
 
 function PostPreview(props) {
+    var domain = null;
+    if(props.post.data.domain !== "self.reactjs")
+        domain = <p className="domain">{props.post.data.domain}</p>
     return (
-        <div id={props.post.data.id} className="PostPreview">
-            {thumbnail(props.post.data.thumbnail)}
-            <div className="post-info">
-                <h2>{props.post.data.title}</h2>
-                <p><span className="createdAt">{getCreatedAtString(props.post.data.created_utc)}</span> por <span className="author">{props.post.data.author}</span></p>
-                <p className="domain">{props.post.data.domain}</p>
+        <a href={"https://reddit.com" + props.post.data.permalink} className="PostLink">
+            <div id={props.post.data.id} className="PostPreview">
+                {thumbnail(props.post.data.thumbnail)}
+                <div className="post-info">
+                    <h2>{props.post.data.title}</h2>
+                    <p><span className="createdAt">{getCreatedAtString(props.post.data.created_utc)}</span> por <span className="author">{props.post.data.author}</span></p>
+                    {domain}
+                </div>
             </div>
-        </div>
+        </a>
     );
 }
 
